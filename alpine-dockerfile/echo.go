@@ -30,14 +30,15 @@ func EchoMessage(w http.ResponseWriter, r *http.Request) {
     namespace := vars.Get("namespace")
     pod := vars.Get("pod")
     container := vars.Get("container")
+    command := vars.Get("command")
 
-    cf, err := upgrader.Upgrade(w, r, nil) // 实际应用时记得做错误处理
+    cf, err := upgrader.Upgrade(w, r, nil)
     if err != nil {
         log.Fatalln(err)
         return
     }
     log.Println("&&&&&&&&&&&&&&test3************\n\n")
-    var opts *ExecOptions = &ExecOptions{namespace,pod,container,[]string {"/bin/bash"},true,true}
+    var opts *ExecOptions = &ExecOptions{namespace,pod,container,[]string {command},true,true}
 
     var kubeconfig string = "/etc/rancher/k3s/k3s.yaml"
     // kubeconfig = replaceHomePath(kubeconfig)
