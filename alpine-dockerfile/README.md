@@ -7,6 +7,7 @@ systemctl restart k3s
 Set cluster.server.ip (/etc/rancher/k3s/k3s.yaml) to local host public IP.
 
 Write containers.image = docker.io/library/go-websocket:0.1
+You can add nodeSlector in go-websocket.yaml to make sure this pod is started in the node with go-websocket-0.1.tar
 ```
 kubectl apply -f go-websocket.yaml
 ```
