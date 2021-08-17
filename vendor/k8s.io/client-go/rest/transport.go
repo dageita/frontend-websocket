@@ -17,7 +17,6 @@ limitations under the License.
 package rest
 
 import (
-	"fmt"
 	"crypto/tls"
 	"errors"
 	"net/http"
@@ -57,8 +56,7 @@ func HTTPWrappersForConfig(config *Config, rt http.RoundTripper) (http.RoundTrip
 	if err != nil {
 		return nil, err
 	}
-	res,_ := transport.HTTPWrappersForConfig(cfg, rt)
-	fmt.Println("rest.HTTPWrappersForConfig.rt1:",res)
+	// res, _ := transport.HTTPWrappersForConfig(cfg, rt)
 	return transport.HTTPWrappersForConfig(cfg, rt)
 }
 

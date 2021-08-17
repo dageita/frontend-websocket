@@ -37,9 +37,7 @@ func HTTPWrappersForConfig(config *Config, rt http.RoundTripper) (http.RoundTrip
 	if config.WrapTransport != nil {
 		rt = config.WrapTransport(rt)
 	}
-	fmt.Println("tranport.HTTPWrappersForConfig.rt1:",rt)
 	rt = DebugWrappers(rt)
-	fmt.Println("tranport.HTTPWrappersForConfig.rt2:",rt)
 
 	// Set authentication wrappers
 	switch {
@@ -62,7 +60,6 @@ func HTTPWrappersForConfig(config *Config, rt http.RoundTripper) (http.RoundTrip
 		len(config.Impersonate.Extra) > 0 {
 		rt = NewImpersonatingRoundTripper(config.Impersonate, rt)
 	}
-	fmt.Println("tranport.HTTPWrappersForConfig.rt3:",rt)
 	return rt, nil
 }
 
